@@ -11,6 +11,7 @@ TagManager:
   - winMenu
   - deathMenu
   - Spike
+  - Level
   layers:
   - Default
   - TransparentFX
