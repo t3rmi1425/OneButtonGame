@@ -7,6 +7,10 @@ TagManager:
   - Wall
   - Coins
   - Goal
+  - LevelSpawner
+  - winMenu
+  - deathMenu
+  - Spike
   layers:
   - Default
   - TransparentFX
