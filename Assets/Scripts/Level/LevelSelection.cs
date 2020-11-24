@@ -33,14 +33,15 @@ public class LevelSelection : MonoBehaviour
         if (levelNumber < 6)
         {
             Destroy(destroy);
-            Instantiate(level[index], transform.position, Quaternion.identity);   
-         
-            destroy = FindObjectOfType<AssignLevel>().gameObject;
+            Instantiate(level[index], transform.position, Quaternion.identity);
+            
             index++;
             levelNumber++;
-
+            
             Time.timeScale = 1f;
             winMenu.SetActive(false);
+            
+            destroy = FindObjectOfType<AssignLevel>().gameObject;
         } 
         
         

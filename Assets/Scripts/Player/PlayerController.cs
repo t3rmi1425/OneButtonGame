@@ -22,6 +22,7 @@ namespace OneButtonGame.player
         [SerializeField, Header("Misc")]
         private int jumpCount = 1;
         public bool isPlaying = false;
+        SoundManager soundMan;
         [SerializeField]
         LayerMask wall;
         [SerializeField]
@@ -47,10 +48,14 @@ namespace OneButtonGame.player
         #region Start and Update
         private void Start()
         {
+            #region Assigning components
             rb2d = GetComponent<Rigidbody2D>();
             gm = FindObjectOfType<GameManager>();
-            currentSpeed = speed;
             gm.player = this.gameObject.GetComponent<PlayerController>();
+            soundMan = FindObjectOfType<SoundManager>();
+            #endregion
+
+            currentSpeed = speed;
         }
 
         private void Update()
@@ -105,6 +110,8 @@ namespace OneButtonGame.player
             {
                 // assigns the coin gameobject to the variable
                 coin = other.gameObject.GetComponent<Coins>();
+                // plays coin sound
+                soundMan.coinEffect.Play();
                 // calls method to add a coin to the stats
                 CollectCoin(coin.coinCost);
                 // calls method to destroy object

@@ -14,6 +14,7 @@ public class Rotators : MonoBehaviour
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
+        player = FindObjectOfType<PlayerController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
