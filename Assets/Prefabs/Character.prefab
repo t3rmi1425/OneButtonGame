@@ -156,7 +156,7 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.3744763
+        time: 0.4444353
         value: 0
         inSlope: 0
         outSlope: 0
@@ -199,7 +199,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
@@ -274,7 +274,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 2684803284617410338, guid: 1b1b8f724dd72f748984391c33fcc888,
     type: 3}
   m_Color: {r: 1, g: 0.52490103, b: 0, a: 1}

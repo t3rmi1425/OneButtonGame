@@ -12,7 +12,7 @@ namespace OneButtonGame.player
         #endregion
 
         [SerializeField, Header("Inventory Stats")]
-        private int coinAmount;
+        public int coinAmount;
         [SerializeField]
         private int jumpAmount;
 

@@ -11,9 +11,11 @@ public class GameManager : MonoBehaviour
     [SerializeField, Header("Text")]
     private Text coins;
     [SerializeField]
+    private Text coinsDeath, coinsDisplay;
+    [SerializeField]
     private Text jumps;
     [SerializeField]
-    private Text winCoins, winJump;  
+    private Text jumpsDeath;  
     [SerializeField, Space]
     public PlayerController player;
 
@@ -48,14 +50,6 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// used to make sure any menus that need to be active are set active
-    /// </summary>
-    private void EnableMenusAtStart()
-    {
-
-    }
-
-    /// <summary>
     /// Called when the player reaches the goal to activate the Win menu and pause the game
     /// </summary>
     public void WinMenu()
@@ -74,10 +68,7 @@ public class GameManager : MonoBehaviour
         player.isPlaying = false;
         Time.timeScale = 0;
     }
-    public void _MainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
+
     #endregion
 
     #endregion
@@ -89,8 +80,9 @@ public class GameManager : MonoBehaviour
     {
         coins.text = string.Format("You collected {0} coins!", player.CoinAmount);
         jumps.text = string.Format("You jumped {0} times!", player.JumpAmount);
+        coinsDeath.text = string.Format("You collected {0}", player.CoinAmount, "!");
+        jumpsDeath.text = string.Format("You jumped {0}", player.JumpAmount, "!");
 
-        //winCoins.text = string.Format("You collected {0}", player.CoinAmount, "!");
-        //winJump.text = string.Format("You jumped {0}", player.JumpAmount, "!");
+        coinsDisplay.text = string.Format("{0}", player.coinAmount);
     }
 }
