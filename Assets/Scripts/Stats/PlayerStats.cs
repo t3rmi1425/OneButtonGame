@@ -11,10 +11,12 @@ namespace OneButtonGame.player
         public int JumpAmount  {  get => jumpAmount; }
         #endregion
 
+        #region Variables
         [SerializeField, Header("Inventory Stats")]
         public int coinAmount;
         [SerializeField]
         private int jumpAmount;
+        #endregion
 
         #region Methods
         /// <summary>
