@@ -1589,7 +1589,13 @@ MonoBehaviour:
   destroy: {fileID: 663914750}
   winMenu: {fileID: 990991749}
   deathMenu: {fileID: 834692863}
-  level_restart: {fileID: 0}
+  level_restart:
+  - {fileID: 8050172358779221092, guid: 7f07d823f5d4d4842b03ad2bc4834bc8, type: 3}
+  - {fileID: 8050172358779221092, guid: f0f1459b914e2a34ea77efd298c53c96, type: 3}
+  - {fileID: 8050172358779221092, guid: ef57596d64051a041afa83890cb23a2c, type: 3}
+  - {fileID: 8050172358779221092, guid: 5dfc2634c8045fc44baf2778c79d3a2a, type: 3}
+  - {fileID: 8050172358779221092, guid: 18dd3b0e5f749e04798dc311a8e2db8d, type: 3}
+  - {fileID: 8050172358779221092, guid: 7cc72084f5f3c3e4ba788cdb1ae6bf30, type: 3}
   level_restart_destroy: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &969245880

@@ -10,8 +10,9 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private GameObject[] level;
     private int index;
+    private int restart_Index;
     public int levelNumber = 1;
-
+    
     [SerializeField]
     private Text displaylevel;
     [SerializeField]
@@ -19,19 +20,23 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private GameObject winMenu, deathMenu;
 
-    //[SerializeField]
-    //private GameObject level_restart, level_restart_destroy;
+    [SerializeField]
+    private GameObject[] level_restart;
+    [SerializeField]
+    private GameObject level_restart_destroy;
 
     [SerializeField]
     PlayerController player;
 
     private void Start()
     {
+        Time.timeScale = 1f;
         index = 0;
+        restart_Index = 0;
         levelNumber = 1;
 
         //level_restart = FindObjectOfType<AssignLevel>().gameObject;
-        //level_restart_destroy = FindObjectOfType<AssignLevel>().gameObject;
+        level_restart_destroy = FindObjectOfType<AssignLevel>().gameObject;
         player = FindObjectOfType<PlayerController>();
     }
 
@@ -55,6 +60,7 @@ public class LevelSelection : MonoBehaviour
             
             // add to index to prime the next level
             index++;
+            restart_Index++;
             // add to the level number
             levelNumber++;
             
@@ -74,25 +80,26 @@ public class LevelSelection : MonoBehaviour
     public void RestartLevel()
     {
        
-        SceneManager.LoadScene("GameScene"); 
+        //SceneManager.LoadScene("GameScene"); 
         
         
-        //#region Assign levels to objects
-        //level_restart = FindObjectOfType<AssignLevel>().gameObject;
-        //level_restart_destroy = FindObjectOfType<AssignLevel>().gameObject;
-        //#endregion
+        #region Assign levels to objects
+        level_restart_destroy = FindObjectOfType<AssignLevel>().gameObject;
+        #endregion
 
 
-        //// destroy the old level
-        //Destroy(level_restart_destroy);
-        //// reset the coins
-        //player.coinAmount = 0;
-        //// set time to 1
+        // destroy the old level
+        Destroy(level_restart_destroy);
+        // reset the coins
+        player.coinAmount = 0;
+        // set time to 1
         Time.timeScale = 1f;
-        //// turn off death menu
+        // turn off death menu
         deathMenu.SetActive(false);
-        //// spawn a fresh level
-        //Instantiate(level_restart, transform.position, Quaternion.identity);
+        // spawn a fresh level
+        Instantiate(level_restart[restart_Index], transform.position, Quaternion.identity);
+        destroy = FindObjectOfType<AssignLevel>().gameObject;
+
     }
 
     private void DisplayLevel()
