@@ -1645,7 +1645,7 @@ MonoBehaviour:
   - {fileID: 8050172358779221092, guid: 5dfc2634c8045fc44baf2778c79d3a2a, type: 3}
   - {fileID: 8050172358779221092, guid: 18dd3b0e5f749e04798dc311a8e2db8d, type: 3}
   - {fileID: 8050172358779221092, guid: 7cc72084f5f3c3e4ba788cdb1ae6bf30, type: 3}
-  levelNumber: 0
+  levelNumber: 6
   displaylevel: {fileID: 401491944}
   destroy: {fileID: 663914750}
   winMenu: {fileID: 990991749}
