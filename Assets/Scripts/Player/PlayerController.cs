@@ -25,8 +25,6 @@ namespace OneButtonGame.player
         SoundManager soundMan;
         [SerializeField]
         LayerMask wall;
-        [SerializeField]
-        private SpriteRenderer player;
         #endregion
 
         #region Scripts
@@ -43,6 +41,8 @@ namespace OneButtonGame.player
         public bool isRight;
         #endregion
         #endregion
+        private string text;
+        public bool debug = false;
 
         #region Methods
         #region Start and Update
@@ -61,10 +61,36 @@ namespace OneButtonGame.player
         private void Update()
         {
             PlayerMove();
+            AnimatePlayer();
         }
         #endregion
 
         #region PlayerControls
+        private void AnimatePlayer()
+        {
+            float heading = Mathf.Atan2(rb2d.velocity.x, rb2d.velocity.y) * Mathf.Rad2Deg; // gets the heading of the character
+            Quaternion rotation = Quaternion.Euler(0, 0, -heading); // sets the rotation towards the heading
+            
+            if (rb2d.velocity.magnitude > 6f)
+            {
+                // rotates the character if it has moved
+                transform.rotation = rotation; 
+                // gets the scale of the character
+                Vector3 scale = gameObject.transform.localScale;
+                // sets the scale based off the magnitude of the characters velocity 
+                scale.y = Mathf.Lerp(scale.y, Mathf.Clamp(rb2d.velocity.magnitude * 0.1f, 1f, 2f), 20 * Time.deltaTime);
+                // sets the characters scale
+                gameObject.transform.localScale = scale;
+            }
+            else 
+            { 
+                gameObject.transform.localScale = Vector3.one; // resets the scale when the character isnt moving  
+                transform.rotation = Quaternion.Euler(0, 0, 0); // else reset to 0
+            } 
+            
+            text = string.Format("Heading: {0}\nRotation: {1}\nMagneto: {2}\nVelocity: {3}", heading, rotation, rb2d.velocity.magnitude, rb2d.velocity);
+        }
+        
         private void PlayerMove()
         {
             bool canJump = Input.GetKeyDown(KeyCode.Space) && isPlaying;
@@ -79,13 +105,11 @@ namespace OneButtonGame.player
             {
                 // flips the player to move left
                 currentSpeed = -speed;
-                player.flipX = true;
             }
             else if (isRight)
             {
                 // flips the player to move Right
                 currentSpeed = speed;
-                player.flipX = false;
             }
         }
         #endregion
@@ -130,6 +154,15 @@ namespace OneButtonGame.player
         }
         #endregion
         #endregion
+
+        private void OnGUI()
+        {
+            if (debug)
+            {
+                GUI.Box(new Rect(500, 250, 150, 100), text);
+                Debug.Log(text);
+            }
+        }
     }
 }
 
